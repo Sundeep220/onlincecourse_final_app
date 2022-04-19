@@ -52,7 +52,7 @@
             </div>
             <!-- Task: show questions and choices -->
             <!-- <HINT> Use Bootstrap Collapse to hide exam first, more details could be found here
-            https://www.w3schools.com/bootstrap4/bootstrap_collapse.asp-->
+            https://www.w3schools.com/bootstrap4/bootstrap_collapse.asp4-->
 
             <!--
 
@@ -75,14 +75,15 @@
             <input type="check" name="choice_{{choice.id}}" id="{{choice.id}}" ...>
             -->
 
-            <!-- A choice submission form example
-            <form id="questionform" action="point to a submit view" method="post">
-                        ... for each question in the course ...
+            <!-- choice submission form example--> 
+            <div id="exam" class="collapse">
+            <form id="questionform" action="{% url 'onlinecourse:submit '%}" method="post">
+                        {% for question in course_list %}
                         <div class="card mt-1">
                             <div class="card-header"><h5>{{ question.question_text}}</h5></div>
                             {% csrf_token %}
                             <div class="form-group">
-                               ... for each choice in the question ...
+                               {% for choice in question %}
                                 <div class="form-check">
                                     <label class="form-check-label">
                                         <input type="checkbox" name="choice_{{choice.id}}"
@@ -90,10 +91,13 @@
                                                value="{{choice.id}}">{{ choice.choice_text }}
                                     </label>
                                 </div>
+                                {% endfor%}
                             </div>
                         </div>
+                        {% endfor%}
                     <input class="btn btn-success btn-block" type="submit" value="Submit">
-            </form> -->
+            </form>
+        </div> 
 
             <!--Check here to see more details Bootstrap checkbox
              https://www.w3schools.com/bootstrap4/bootstrap_forms_inputs.asp-->
