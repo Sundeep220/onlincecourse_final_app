@@ -1,14 +1,14 @@
 from django.contrib import admin
-# <HINT> Import any new Models here
 from .models import Course, Lesson, Instructor, Learner,Question,Choice
 
-# <HINT> Register QuestionInline and ChoiceInline classes here
+
 class ChoiceInline(admin.TabularInline):
     model = Choice
     extra = 3
+
 class QuestionInline(admin.StackedInline):
     model=Question
-    extra = 5
+    extra = 10
 
 
 class LessonInline(admin.StackedInline):
