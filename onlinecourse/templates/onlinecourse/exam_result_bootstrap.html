@@ -44,7 +44,9 @@
         <div class="alert alert-danger">
             <p class="text text-danger"><b>Failed</b> Sorry, {{user.first_name}} You have failed with score {{ score }}/{{ max_score }}.</p>
         </div>
-        <a class="btn btn-link text-danger" href="{% url 'onlinecourse:course_details' course.id %}">Re-test</a>
+        <button class="btn btn-info">
+        <a class="btn btn-link text-white" href="{% url 'onlinecourse:course_details' course.id %}">Re-test</a>
+        </button>
         {% endif %}
         <div class="card-columns-vertical mt-1">
         <h5 class="">Exam results</h5>
@@ -54,11 +56,11 @@
                     <div class="card-body">
                         {% for choice in question.choice_set.all %}
                               {% if choice.is_correct is True and choice in choices %}
-                              <p class="text text-success"> Correct answer: {{choice.choice_text}}</p>
+                              <p class="text text-success"> Correct answer: {{choice.choice_text}}</p><br>
                               {% elif choice.is_correct is True and choice not in choices %}
-                              <p class="text text-warning">Not selected: {{choice.choice_text}}</p>
+                              <p class="text text-warning">Not selected: {{choice.choice_text}}</p><br>
                               {% elif choice.is_correct is False and choice in choices %}
-                              <p class="text text-danger">Wrong Answer: {{choice.choice_text}}</p>
+                              <p class="text text-danger">Wrong Answer: {{choice.choice_text}}</p><br>
                               {% else %}
                               <p>{{choice.choice_text}}</p> <br>
                               {% endif %}
