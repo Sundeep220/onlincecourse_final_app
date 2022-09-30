@@ -18,6 +18,10 @@ This is an online E-learning applications made using HTML, CSS, Bootstrap and Dj
       - python3 manage.py makemigrations onlinecourse
 4. Run migration to activate models for onlinecourse app:
       - python3 manage.py migrate
+5. Run the application using :
+      - python3 manage.py runserver
+6. Go to your browser and view your application on port 8080.
+7. Go to the endpoint onlinecourse/ to view the application.
 
 
 
