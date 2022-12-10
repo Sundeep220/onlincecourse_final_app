@@ -42,3 +42,19 @@ For your reference, here is a E-R diagram of the application.
 ![home](https://user-images.githubusercontent.com/93663329/206862514-d09b2abf-a1a9-4e24-9db6-c00e6e5ee16d.png)
 
 
+
+**About US**
+
+
+![aboutus](https://user-images.githubusercontent.com/93663329/206862531-cab0cc92-edab-4f03-a360-9e619f9f95f8.png)
+
+
+**Course Details Page**
+
+
+![coursedetails](https://user-images.githubusercontent.com/93663329/206862592-af7af30f-530a-472f-aea4-d66815a165ed.png)
+
+
+
+
+
