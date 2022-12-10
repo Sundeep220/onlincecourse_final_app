@@ -1,0 +1,51 @@
+body{
+    background-color: #FCF6F5FF;
+}
+nav{
+  background-color: #00203FFF;
+}
+
+.row-header {
+    margin: 0px auto;
+    padding: 0px 0px; }
+  
+  .row-content {
+    margin: 0px auto;
+    padding: 10px 0px;
+    border-bottom: 1px ridge;
+    min-height: 400px; }
+  
+  .footer {
+    background-color: #9CC3D5FF;
+    margin: 0px auto;
+    padding: 20px 0px; }
+  
+  .jumbotron {
+    margin: 0px auto;
+    padding: 70px 30px;
+    background: #8abcc7;
+    color: rgb(17, 16, 13); }
+
+  .card-columns-vertical{
+    margin: 0px auto;
+    padding: 30px;
+  }
+
+  form{
+    margin: 0px auto;
+    padding: 10px;
+    /* border: 2px solid black; */
+  }
+
+  .box{
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    border-radius: .5rem;
+    border: 1px solid black;
+  }
+
+  .formbutton{
+    margin-top: 5px;;
+  }
+  

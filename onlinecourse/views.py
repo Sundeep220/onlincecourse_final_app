@@ -148,3 +148,7 @@ def show_exam_result(request, course_id, submission_id):
     context['choices'] = list(submission.choices.all())
     return render(request,'onlinecourse/exam_result_bootstrap.html',context)
 
+def aboutUs(request):
+    return render(request, 'onlinecourse/aboutUs.html' )
+
+

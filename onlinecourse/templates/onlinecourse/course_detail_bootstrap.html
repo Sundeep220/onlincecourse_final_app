@@ -2,18 +2,21 @@
 <html lang="en">
 <head>
      {% load static %}
+     <script src="https://use.fontawesome.com/3288ff397f.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
     <meta charset="UTF-8">
 </head>
 
 <body>
     <!-- Navigation bar -->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-dark navbar-expand-sm">
         <div class="container-fluid">
             <div class="navbar-header">
+                <img src="{% static 'media/logo.png' %}" heigth="30" width="41">
                   <a class="navbar-brand" href="{% url 'onlinecourse:index' %}">Home</a>
             </div>
             <ul class="nav navbar-nav navbar-right">
@@ -41,23 +44,29 @@
 
     <!-- Page content -->
     <div class="container-fluid">
-            <h2>{{ course.name }}</h2>
+        <div class="row row-content">
+            <h2 class="text text-dark font-weight-bold">{{ course.name }}</h2>
+            <div class="row">
             <div class="card-columns-vertical">
                 {% for lesson in course.lesson_set.all %}
-                    <div class="card mt-1">
-                        <div class="card-header"><h5>Lesson {{lesson.order|add:1}}: {{lesson.title}}</h5></div>
+                    <div class="card mt-3">
+                        <div class="card-header bg-dark text-white"><h5>Lesson {{lesson.order|add:1}}: {{lesson.title}}</h5></div>
                         <div class="card-body">{{lesson.content}}</div>
-            </div>
+                    </div>
                 {% endfor %}
             </div>
+            </div>
             <!-- choice submission form example using collapse--> 
-            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#exam">Start Exam</button>
+            <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#exam">
+                <a class = "text text-white"  href="#exam">Start Exam
+                </a>
+                </button>
             {% if user.is_authenticated %}
-                        <div id="exam" class="collapse">
+                        <div id="exam" class="collapse mt-3">
                         <form id="questionform" action="{% url 'onlinecourse:submit' course.id %}" method="post" >
                             {% for question in course.question_set.all %}
-                            <div class="card mt-1">
-                                <div class="card-header"><h5>{{ question.question_text}}</h5></div>
+                            <div class="card mt-2">
+                                <div class="card-header bg-secondary"><h5>{{ question.question_text}}</h5></div>
                                 {% csrf_token %}
                                 <div class="card-body">
                                    {% for choice in question.choice_set.all %}
@@ -71,11 +80,11 @@
                                     {% endfor%}
                                 </div>
                             </div>
-                            {% endfor%}
+                            {% endfor %}
                         <input class="btn btn-success btn-block" type="submit" value="Submit">
                 </form>
             </div>
                 {% endif %}
-    </div>
+    </div>    
 </body>
 </html>

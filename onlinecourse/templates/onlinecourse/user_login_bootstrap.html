@@ -3,39 +3,23 @@
 <head>
     <meta charset="UTF-8">
     {% load static %}
+    <script src="https://use.fontawesome.com/3288ff397f.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-</head>
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
 <body>
 
 <!-- Navigation bar -->
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-dark navbar-expand-sm">
         <div class="container-fluid">
             <div class="navbar-header">
+                <img src="{% static 'media/logo.png' %}" heigth="30" width="41">
                 <a class="navbar-brand" href="{% url 'onlinecourse:index' %}">Home</a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
-                <li>
-                    <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
-                    <a class="btn btn-link" href="{% url 'onlinecourse:logout' %}">Logout</a>
-                </li>
-                {% else %}
-                <li>
-                    <form class="form-inline" action="{% url 'onlinecourse:login' %}" method="post">
-                        {% csrf_token %}
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Username" name="username" >
-                            <input type="password" class="form-control" placeholder="Username" name="psw" >
-                            <button class="btn btn-primary" type="submit">Login</button>
-                            <a class="btn btn-link" href="{% url 'onlinecourse:registration' %}">Sign Up</a>
-                        </div>
-                    </form>
-                </li>
-                {% endif %}
-            </ul>
         </div>
     </nav>
     <!--login form -->
+    <div class = "container">
+        <div class = "box">
     <form action="{% url 'onlinecourse:login' %}" method="post">
         {% csrf_token %}
         <div class="container"> 
@@ -51,8 +35,9 @@
                 {{ message }}
               </div>
             {% endif %}
-            <button class="btn btn-primary" type="submit">Login</button> 
+            <button class="btn btn-primary formbutton" type="submit">Login</button> 
         </div>
     </form>
-
+    </div>
+    </div>
 </body>

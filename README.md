@@ -1,27 +1,7 @@
 
 **General Notes**
 
-This is an online E-learning applications made using HTML, CSS, Bootstrap and Django.
-
-
-**To run this project**
-
-1. Git clone this repository in your device.
-2. Install the necessary dependencies like setting up python runtime using command :
-      - pip install -r requirements.txt
-      or 
-   Install Django, Pillow and gunicorn server seperately by using :
-      - pip install django
-      - pip install Pillow
-      - pip install gunicorn
-3. Run migrations for the models:
-      - python3 manage.py makemigrations onlinecourse
-4. Run migration to activate models for onlinecourse app:
-      - python3 manage.py migrate
-5. Run the application using :
-      - python3 manage.py runserver
-6. Go to your browser and view your application on port 8080.
-7. Go to the endpoint onlinecourse/ to view the application.
+An `onlinecourse` app has already been provided in this repo upon which you will be adding a new assesement feature.
 
 
 

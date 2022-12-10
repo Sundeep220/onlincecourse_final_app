@@ -48,8 +48,7 @@ class Learner(models.Model):
     social_link = models.URLField(max_length=200)
 
     def __str__(self):
-        return self.user.username + "," + \
-               self.occupation
+        return f"{self.user.username},{self.occupation}"
 
 
 # Course model
@@ -64,8 +63,15 @@ class Course(models.Model):
     is_enrolled = False
 
     def __str__(self):
-        return "Name: " + self.name + "," + \
-               "Description: " + self.description
+        return f"Name: {self.name},Description: {self.description}"
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
 
 
 # Lesson model
@@ -110,10 +116,7 @@ class Question(models.Model):
     def is_get_score(self, selected_ids):
         all_answers = self.choice_set.filter(is_correct=True).count()
         selected_correct = self.choice_set.filter(is_correct=True, id__in=selected_ids).count()
-        if all_answers == selected_correct:
-            return True
-        else:
-            return False
+        return all_answers == selected_correct
 
 
 # Choice Model :

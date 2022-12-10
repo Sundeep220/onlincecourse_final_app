@@ -1,0 +1,304 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://use.fontawesome.com/3288ff397f.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static '/css/main.css' %}">
+    <meta charset="UTF-8">
+    <title>Online Courses</title>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <img src="{% static 'media/logo.png' %}" heigth="30" width="41">
+                  <a class="navbar-brand" href="{% url 'onlinecourse:index' %}">LearnIt</a>
+                  
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li>
+                    <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
+                    <a class="btn btn-link" href="{% url 'onlinecourse:logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <form class="form-inline" action="{% url 'onlinecourse:login' %}" method="post">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Username" name="username" >
+                            <input type="password" class="form-control" placeholder="Password" name="psw" >
+                            <button class="btn btn-primary" type="submit">Login</button>
+                            <a class="btn btn-link" href="{% url 'onlinecourse:registration' %}">Sign Up</a>
+                        </div>
+                    </form>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12 col-sm">
+                    {% load static %}
+                    <img src="{% static 'media/logo.png' %}" heigth="100" width="141">
+                </div>
+                <div class="col-12 col-sm-8">
+                    <h1>Learn It</h1>
+                    <p>An webspace for educational content and resources that offers a student everything they need in one place: lectures, resources, opportunities and more. It is also an excellent way for the student to learn and master skills through intense learning and practising. </p>
+                </div>
+                <div class="col-12 col-sm align-self-center">
+                    {% if user.is_authenticated %}
+                    <a class="btn btn-primary btn-sm btn-block" href = "{% url 'onlinecourse:logout' %}" role="button" id="Logout" role="button">Logout</a>
+                    {% else %}
+                    <a class="btn btn-primary btn-sm btn-block" href = "{% url 'onlinecourse:login' %}" role="button" id="Logout" role="button">Login</a>
+                    {% endif %}
+                    <a class="btn btn-info btn-sm btn-block" href = "{% url 'onlinecourse:registration' %}" role="button" id="Signup" role="button">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="row">
+            <ol class="col-12 breadcrumb w3-large">
+                <li class="breadcrumb-item"><a href="{% url 'onlinecourse:index' %}">Home</a></li>
+                <li class="breadcrumb-item active">About Us</li>
+                <li class="breadcrumb-item"><a href="#">Contact Us</a></li>
+            </ol>
+            <div class="col-12">
+                <h4 class="w3-center w3-xxxlarge w3-padding-32 align-self-center">ABOUT US</h4>
+               <hr>
+            </div>
+        </div>
+
+            <div class="row row-content">
+                <div class="col-12 col-sm-6">
+                <h2>Our History</h2>
+                <p>Since its founding in 2020, LearnIT has been an innovator in higher education, reaching out to an emerging middle class, embracing an urban identity and professional focus, and promoting a global vision that informs its 19 schools and colleges.
+                    Today, that trailblazing spirit makes LearnIT one of the most prominent and respected research universities in the world,
+                     featuring top-ranked academic programs and accepting fewer than one in eight undergraduates. Anchored in New York City 
+                     and with degree-granting campuses in Abu Dhabi and Shanghai as well as 12 study away sites throughout the world, LearnIT is a
+                      leader in global education,
+                     with more international students and more students studying abroad than any other US university.
+                </p>
+                </div>
+            <div class="col-12 col-sm-6">
+                <div class="card">
+                    <h3 class="card-header bg-primary text-white">Facts At a Glance</h3>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-6">Started</dt>
+                            <dd class="col-6">3 Feb. 2020</dd>
+                            <dt class="col-6">Official Color</dt>
+                            <dd class="col-6">Blue.</dd>
+                            <dt class="col-6">Alma Mater: </dt>
+                            <dd class="col-6">The Palisades</dd>
+                            <dt class="col-6">Employees</dt>
+                            <dd class="col-6">40</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card card-body bg-light">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">We welcome you to participate in the endless opportunities at LearnIT, joining talented scholars, scientists, artists, writers and others who have been drawn from all over the world to teach, perform, create, and study in a place where everyone belongs.</p>
+                        <footer class="blockquote-footer">Sundeep K S,
+                            <cite title="Source Title">The Wit and Wisdom of Sundeep,
+                            P. Pepe, Diversion Books, 2021</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row row-content">
+            <div class="col-12 col-sm-12 col-md-12">
+                <h2>Corporate Leadership</h2>
+                <div id="accordion">
+					<div class="card">
+						<div class="card-header" role="tab" id="peterhead">
+							<h3 class="mb-0">
+								<a style="text-decoration: none; color: black;" data-toggle="collapse" data-target="#peter">
+									Peter Pan <small>Chief Executive Officer</small>
+								</a>
+							</h3>
+						</div>
+						<div role="tabpanel" class="collapse show" id="peter" data-parent="#accordion">
+							<div class="card-body">
+								<p class="d-none d-sm-block">
+									Our CEO, Peter, credits his hardworking East Asian immigrant parents who undertook the arduous journey to the shores of America with the intention of giving their children the best future. His mother's wizardy in the kitchen whipping up the tastiest dishes with whatever is available inexpensively at the supermarket, was his first inspiration to create the fusion cuisines for which <em>The Frying Pan</em> became well known. He brings his zeal for fusion cuisines to this restaurant, pioneering cross-cultural culinary connections.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" role="tab" id="dannyhead">
+							<h3 class="mb-0">
+								<a class="collapsed "  style="text-decoration: none; color: black;" data-toggle="collapse" data-target="#danny">
+									Morgan Willis <small>Senior Cloud Technologist
+                                    </small>
+								</a>
+							</h3>
+						</div>
+						<div role="tabpanel" class="collapse" id="danny" data-parent="#accordion">
+							<div class="card-body">
+								<p class="d-none d-sm-block">
+									Morgan Willis is a Senior Cloud Technologist based in the US. Morgan has a background in Software Development, technical training, and has earned 6 AWS Certifications. Morgan has always had a strong passion for technology, has a degree in computer science and has held various jobs throughout her IT career. Outside of the tech world, Morgan is a runner, hiker, and skier and she spends as much time outdoors as possible.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+						<div class="card-header" role="tab" id="agumbehead">
+							<h3 class="mb-0">
+                                <a class="collapsed" style="text-decoration: none; color: black;" data-toggle="collapse" data-target="#agumbe">
+									Seph Robinson <small>Cloud Technologist
+
+                                    </small>
+								</a>
+							</h3>
+						</div>
+						<div role="tabpanel" class="collapse" id="agumbe" data-parent="#accordion">
+							<div class="card-body">
+								<p class="d-none d-sm-block">
+                                    Seph has been studying and working in the technical field for most of the last 20 years. From school districts, to data centers, and now with AWS (for most of the last decade) he has enjoyed seeing how technology has changed, and enjoys the continuous challenges of trying to keep up with those changes. Outside of the technical world, his favorite hobbies include traveling, playing Ultimate Disc, and various forms of DIY projects.
+                                </p>
+							</div>
+						</div>
+					</div>
+					<div class="card">
+                        <div class="card-header" role="tab" id="albertohead">
+							<h3 class="mb-0">
+								<a class="collapsed" style="text-decoration: none; color: black;" data-toggle="collapse" data-target="#alberto">
+									Alana Layton
+
+ <small>Associate Professor
+
+</small>
+								</a>
+							</h3>
+						</div>
+						<div role="tabpanel" class="collapse" id="alberto" data-parent="#accordion">
+							<div class="card-body">
+								<p class="d-none d-sm-block">
+                                    Alana is a Cloud Technologist based out of Seattle, WA and has been working at AWS for over two years. Outside of AWS, you can find her testing her knowledge at bar trivia, watching the latest true crime documentary, or training for a marathon.
+                                </p>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+       </div>
+       <div class="row row-content">
+        <div class="col-12 col-sm-9">
+            <h2>Facts &amp; Figures</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>&nbsp;</th>
+                            <th>2020</th>
+                            <th>2021</th>
+                            <th>2022</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>Enrollment</th>
+                            <td>15</td>
+                            <td>30</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <th>Undergraduate</th>
+                            <td>10</td>
+                            <td>27</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <th>Graduate and Professional</th>
+                            <td>5</td>
+                            <td>3</td>
+                            <td>5</td>
+                        </tr>
+                        <tr>
+                            <th>Annual Turnover</th>
+                            <td>$251</td>
+                            <td>$1,250</td>
+                            <td>~$3,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+         <div class="col-12 col-sm-3">
+        </div>
+   </div> 
+   
+
+
+    </div>
+</div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="row">             
+                <div class="col-4 offset-1 col-sm-2">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="./aboutus.html">About</a></li>
+                        <li><a href="./menus.html">Menu</a></li>
+                        <li><a href="./contactus.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-7 col-sm-5">
+                    <h5>Our Address</h5>
+                    <address>
+                        JSSATE BOYS HOSTEL<br>
+                        Reflex Housing Layout, Hemmigepura Ward,<br>
+                        RR Nagar, Bengaluru, Karnataka<br> 560098
+                        <br>
+                      <i class="fa fa-phone fa-lg"></i>: +852 1234 5678<br>
+                      <i class="fa fa-fax fa-lg"></i>: +852 8765 4321<br>
+                      <i class="fa fa-envelope fa-lg"></i>: 
+                      <a href="mailto:sundeepksingh398@gmail.com">sundeepksingh398@gmail.com</a>
+                   </address>
+                </div>
+                <div class="col-12 col-sm-4 align-self-center">
+                    <div class="text-center">
+                        <a class="btn btn-social-icon btn-google" href="http://google.com/+"><i class="fa fa-google-plus"></i></a>
+                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook"></i></a>
+                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin"></i></a>
+                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter"></i></a>
+                        <a class="btn btn-social-icon btn-google" href="http://youtube.com/"><i class="fa fa-youtube"></i></a>
+                        <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope-o"></i></a>
+                    </div>
+                </div>
+           </div>
+           <div class="row justify-content-center">             
+                <div class="col-auto">
+                    <p>©Made By Sundeep Kumar Singh and Amit Singh</p>
+                </div>
+           </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
