@@ -1,7 +1,7 @@
 
 **General Notes**
 
-An `onlinecourse` app has already been provided in this repo upon which you will be adding a new assesement feature.
+An `onlinecourse` app with provided course materials with quizes for users to learn and test their knowledge.
 
 
 - Before running this project: 
